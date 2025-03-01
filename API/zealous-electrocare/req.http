@@ -1,0 +1,23 @@
+# Service Endpoints
+DELETE http://localhost:8081/service/del/2
+###
+PUT http://localhost:8081/service/update
+Content-Type: application/json
+
+{
+    "serviceId":3,
+    "serviceName":"AC Wiring",
+    "price":150
+}
+###
+GET http://localhost:8081/service/
+###
+GET http://localhost:8081/service/3
+###
+POST http://localhost:8081/service/
+Content-Type: application/json
+
+{
+    "serviceName":"AC Wiring",
+    "price":100
+}
