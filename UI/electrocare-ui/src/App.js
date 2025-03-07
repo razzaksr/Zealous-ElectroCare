@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { messaging } from "./base";  // Import messaging instance
 import { getToken, onMessage } from "firebase/messaging";
+import { NewBooking } from "./NewBooking";
 
 const App = () => {
   useEffect(() => {
@@ -43,6 +44,7 @@ const App = () => {
     <div>
       <h1>Welcome to My App</h1>
       <p>Firebase Cloud Messaging is integrated!</p>
+      <NewBooking/>
     </div>
   );
 };

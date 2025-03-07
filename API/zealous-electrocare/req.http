@@ -17,11 +17,11 @@ Content-Type: application/json
 ###
 GET http://localhost:8081/booking/
 ###
-POST http://localhost:8081/booking/confirm/razzaksr/2025-03-08T14:00:00/3
+POST http://localhost:8081/booking/confirm/razzaksr/2025-03-09T14:00:00/3
 
 ###
 # User endpoints
-GET http://localhost:8081/users/technician
+GET http://localhost:8081/users/customer
 ###
 POST http://localhost:8081/users/signup
 Content-Type: application/json

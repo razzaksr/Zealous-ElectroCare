@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.razak.zealous_electrocare.services.UserService;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserApi {
     @Autowired
     private UserService userService;
@@ -41,6 +43,7 @@ public class UserApi {
 
     @PostMapping("/update-location")
     public ResponseEntity<String> updateLocation(@RequestBody Map<String, Object> request) {
+        System.out.println("Received at backend");
         User user = userService.getUserByUsername((String)request.get("username"))
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.setLatitude((Double)request.get("latitude"));

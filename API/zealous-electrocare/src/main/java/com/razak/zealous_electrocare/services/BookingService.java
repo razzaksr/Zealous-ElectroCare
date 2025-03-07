@@ -1,7 +1,9 @@
 package com.razak.zealous_electrocare.services;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -90,6 +92,7 @@ public class BookingService {
         // List<User> availableProviders = technicianAvailRepo.findByIsAvailable(true);
         User nearestTechnician = null;
         double minDistance = Double.MAX_VALUE;
+        Map<Double,User> distances = new HashMap<>();
 
         for (TechnicianAvailability availability : technicianAvailRepo.findAll()) {
             // time
@@ -98,13 +101,23 @@ public class BookingService {
                 System.out.println("Matched Time technician "+tempTechnician);
                 // tempTechnician = tempTechnician.getRole().equals("technician")?tempTechnician:null;
                 double distance = DistanceCalculator.calculateDistance(userLat, userLon, tempTechnician.getLatitude(), tempTechnician.getLongitude());
+                System.out.println(distance);
+                distances.put( distance,tempTechnician);
                 // location
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    nearestTechnician = tempTechnician;
-                    System.out.println("New Technician has set");
-                }
+                // if (distance < minDistance) {
+                //     minDistance = distance;
+                //     nearestTechnician = tempTechnician;
+                //     System.out.println("New Technician has set");
+                // }
             }
+        }
+        for (Double keySet : distances.keySet()) {
+            if(keySet<minDistance){
+                minDistance = keySet;
+            }
+        }
+        if(minDistance!=Double.MAX_VALUE){
+            nearestTechnician = distances.get(minDistance);
         }
 
         return nearestTechnician;
