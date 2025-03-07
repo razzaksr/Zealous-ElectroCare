@@ -14,12 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Booking {
+public class TechnicianAvailability {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bookingId;
-    private String bookedBy;
+    private long availableId;
     private String technician;
-    private LocalDateTime scheduledDateTime;
-    private int service;
-    private String status;// Pending, Confirmed, Completed, Cancelled
+    private LocalDateTime availableFrom;
+    private LocalDateTime availableTo;
 }
