@@ -62,7 +62,7 @@ Content-Type: application/json
 {
     "serviceId":3,
     "serviceName":"AC Wiring",
-    "price":150
+    "price":130
 }
 ###
 GET http://localhost:8081/service/

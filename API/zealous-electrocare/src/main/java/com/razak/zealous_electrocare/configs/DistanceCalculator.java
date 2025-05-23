@@ -1,5 +1,6 @@
 package com.razak.zealous_electrocare.configs;
 
+// Haversine formula to find the distance
 public class DistanceCalculator {
     private static final double EARTH_RADIUS = 6371; // Radius of Earth in km
 
