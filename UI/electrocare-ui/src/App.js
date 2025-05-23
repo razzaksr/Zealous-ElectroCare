@@ -1,55 +1,72 @@
-import React, { useEffect } from "react";
-import { messaging } from "./base";  // Import messaging instance
-import { getToken, onMessage } from "firebase/messaging";
-import { NewBooking } from "./NewBooking";
+import { BrowserRouter, Routes } from "react-router-dom";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+import logo from "./electrocare.png";
+import { Landing } from "./Landing";
 
 const App = () => {
-  useEffect(() => {
-    // Request permission for notifications
-    const requestPermission = async () => {
-      try {
-        const permission = await Notification.requestPermission();
-        if (permission === "granted") {
-          console.log("Notification permission granted.");
-          // Get the FCM token
-          const token = await getToken(messaging, {
-            vapidKey: "KrhI1hki4PH7hn6UesdkBmHRwn4vwthhQpAMeSMJodA" // Get this from Firebase Console (Cloud Messaging settings)
-          });
-          console.log("FCM Token:", token);
-          // Send this token to the backend to send notifications
-        } else {
-          console.log("Notification permission denied.");
-        }
-      } catch (error) {
-        console.error("Error getting notification permission:", error);
-      }
-    };
+  return(
+    <>
+      <BrowserRouter>
+        <Landing/>
+        <Routes>
 
-    requestPermission();
-
-    // Listen for foreground messages
-    const unsubscribe = onMessage(messaging, (payload) => {
-      console.log("Message received in foreground:", payload);
-      // Show notification manually
-      new Notification(payload.notification.title, {
-        body: payload.notification.body,
-        icon: payload.notification.icon,
-      });
-    });
-
-    return () => unsubscribe(); // Cleanup on unmount
-  }, []);
-
-  return (
-    <div>
-      <h1>Welcome to My App</h1>
-      <p>Firebase Cloud Messaging is integrated!</p>
-      <NewBooking/>
-    </div>
-  );
-};
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
+}
 
 export default App;
+
+// const App = () => {
+//   useEffect(() => {
+//     // Request permission for notifications
+//     const requestPermission = async () => {
+//       try {
+//         const permission = await Notification.requestPermission();
+//         if (permission === "granted") {
+//           console.log("Notification permission granted.");
+//           // Get the FCM token
+//           const token = await getToken(messaging, {
+//             vapidKey: "KrhI1hki4PH7hn6UesdkBmHRwn4vwthhQpAMeSMJodA" // Get this from Firebase Console (Cloud Messaging settings)
+//           });
+//           console.log("FCM Token:", token);
+//           // Send this token to the backend to send notifications
+//         } else {
+//           console.log("Notification permission denied.");
+//         }
+//       } catch (error) {
+//         console.error("Error getting notification permission:", error);
+//       }
+//     };
+
+//     requestPermission();
+
+//     // Listen for foreground messages
+//     const unsubscribe = onMessage(messaging, (payload) => {
+//       console.log("Message received in foreground:", payload);
+//       // Show notification manually
+//       new Notification(payload.notification.title, {
+//         body: payload.notification.body,
+//         icon: payload.notification.icon,
+//       });
+//     });
+
+//     return () => unsubscribe(); // Cleanup on unmount
+//   }, []);
+
+//   return (
+//     <div>
+//       <h1>Welcome to My App</h1>
+//       <p>Firebase Cloud Messaging is integrated!</p>
+//       <img src={logo} />
+//       {/* <NewBooking/> */}
+//     </div>
+//   );
+// };
+
+
 
 
 // import { messaging } from "./base";
