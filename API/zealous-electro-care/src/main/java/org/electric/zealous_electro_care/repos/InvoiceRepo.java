@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface InvoiceRepo extends JpaRepository<Invoice,Long>{
     @Query("Select bookingId from Invoice")
     List<Long> findBookingIds();
+    Invoice findAllByBookingId(long id);
 }

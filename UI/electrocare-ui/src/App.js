@@ -1,17 +1,28 @@
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
-import logo from "./electrocare.png";
 import { Landing } from "./Landing";
+import { Header } from "./Components/Header";
+import Footer from "./Components/Footer";
+import { Service } from "./pages/Service";
+import { NewBooking } from "./pages/NewBooking";
+import { Home } from "./pages/Home";
+import { ViewBookings } from "./pages/ViewBookings";
+
 
 const App = () => {
   return(
     <>
       <BrowserRouter>
-        <Landing/>
+        <Header/>
         <Routes>
-
+          {/* <Route path="/" element={<Landing/>} /> */}
+          <Route path="/" element={<Home/>} />
+          <Route path="/services" element={<Service/>} />
+          <Route path="/book/:service" element={<NewBooking/>} />
+          <Route path="/bookings" element={<ViewBookings/>} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )

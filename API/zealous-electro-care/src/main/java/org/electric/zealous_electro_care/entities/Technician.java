@@ -16,6 +16,13 @@ public class Technician {
     private Double rating=0.0;
     private int ratingCount=0;
     private boolean available=true;
+    private Double avgRating;
+    public Double getAvgRating() {
+        return rating/ratingCount;
+    }
+    public void setAvgRating(Double avgRating) {
+        this.avgRating = avgRating;
+    }
     @Override
     public String toString() {
         return "Technician [username=" + username + ", latitude=" + latitude + ", longitude=" + longitude + ", rating="

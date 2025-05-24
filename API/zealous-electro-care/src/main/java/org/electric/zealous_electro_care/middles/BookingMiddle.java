@@ -25,6 +25,10 @@ public class BookingMiddle {
     @Autowired
     private TechnicianMiddle technicianMiddle;
 
+    public Booking getOneById(long id){
+        return repo.findById(id).orElse(null);
+    }
+
     public List<Booking> viewUpComing(){
         return repo.findAllByStatus("CONFIRMED");
     }

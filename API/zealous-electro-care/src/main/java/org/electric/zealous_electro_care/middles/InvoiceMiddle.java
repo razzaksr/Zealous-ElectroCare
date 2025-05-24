@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 public class InvoiceMiddle {
     @Autowired
     private InvoiceRepo repo;
+
+    public Invoice getOne(long id){
+        return repo.findAllByBookingId(id);
+    }
     
     public List<Invoice> viewInvoices(){
         return repo.findAll();

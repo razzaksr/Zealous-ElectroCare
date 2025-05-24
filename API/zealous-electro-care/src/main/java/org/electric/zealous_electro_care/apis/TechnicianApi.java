@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,11 @@ public class TechnicianApi {
     @Autowired
     private UserMiddle userMiddle;
     private Logger logger = LoggerFactory.getLogger(TechnicianApi.class);
+
+    @GetMapping("/{username}")
+    public Technician getTechnician(@PathVariable String username){
+        return middle.getTechnicianByUsername(username);
+    }
 
     @PutMapping("/rate/{username}/{rate}")
     public Technician rates(@PathVariable String username, @PathVariable double rate){

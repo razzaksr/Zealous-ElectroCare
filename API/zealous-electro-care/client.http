@@ -1,4 +1,9 @@
 @base = http://localhost:8081
+# invoice
+
+GET {{base}}/api/invoices/18
+
+###
 
 # booking endpoint calling
 PUT {{base}}/api/bookings/update

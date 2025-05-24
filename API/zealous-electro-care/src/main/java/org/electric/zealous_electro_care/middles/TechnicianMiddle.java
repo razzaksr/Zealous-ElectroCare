@@ -16,6 +16,7 @@ public class TechnicianMiddle {
         Technician technician = getTechnicianByUsername(username);
         technician.setRating(technician.getRating()+current);
         technician.setRatingCount(technician.getRatingCount()+1);
+        technician.setAvgRating(technician.getRating()/technician.getRatingCount());
         return repo.save(technician);
     }
 
