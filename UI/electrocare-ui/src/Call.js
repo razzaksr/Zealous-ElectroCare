@@ -42,3 +42,8 @@ export const rateTechnician = async(tech,rate) =>{
     const data = await axios.put(`${backend}/technicians/rate/${tech}/${rate}`)
     return data.data
 }
+
+export const findNearElectricians = async(lat,log) =>{
+    const data = await axios.get(`${backend}/technicians/near/${lat}/${log}`)
+    return data.data
+}

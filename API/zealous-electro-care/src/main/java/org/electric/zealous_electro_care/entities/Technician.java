@@ -16,7 +16,7 @@ public class Technician {
     private Double rating=0.0;
     private int ratingCount=0;
     private boolean available=true;
-    private Double avgRating;
+    private Double avgRating=0.0;
     public Double getAvgRating() {
         return rating/ratingCount;
     }

@@ -23,9 +23,6 @@ export const Service = () =>{
                             <Card.Title><span className="display-6 bi bi-lightning"></span></Card.Title>
                             <Card.Body>
                                 <Card.Title><h1>{val.serviceName}</h1></Card.Title>
-                                <Card.Text>
-                                    Install new light fixtures, ceiling fans, recessed lighting, and more.
-                                </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <p className="float-start display-6">{val.price}</p>
