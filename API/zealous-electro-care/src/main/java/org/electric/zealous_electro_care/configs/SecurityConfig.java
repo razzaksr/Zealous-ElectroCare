@@ -1,6 +1,8 @@
 package org.electric.zealous_electro_care.configs;
 
 import org.electric.zealous_electro_care.middles.UserMiddle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +28,7 @@ public class SecurityConfig {
     private UserMiddle middle;
     @Autowired
     private JwtFilter jwtFilter;
+    private Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -44,8 +47,10 @@ public class SecurityConfig {
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        logger.info("filter chain called");
         httpSecurity.csrf(customizer->customizer.disable());
-        httpSecurity.authorizeHttpRequests(request->request.requestMatchers("/api/auth/signup","/api/auth/login").permitAll());
+        httpSecurity.authorizeHttpRequests(request->request.requestMatchers("/api/auth/signup","/api/auth/login","/api/services/").permitAll());
+        httpSecurity.authorizeHttpRequests(request->request.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll());
         httpSecurity.authorizeHttpRequests(request->request.anyRequest().authenticated());
         httpSecurity.httpBasic(Customizer.withDefaults());
         httpSecurity.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

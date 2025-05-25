@@ -36,7 +36,7 @@ Content-Type: application/json
 }
 ###
 GET {{base}}/api/bookings/by/rasheedha
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYXNoZWVkaGEiLCJpYXQiOjE3NDgxNTQzNTksImV4cCI6MTc0ODE1NDQ2N30.0Lt9edxMvjOj3L6QkEU5-9xQhECCD7vcJE4Ft509jbQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYXNoZWVkaGEiLCJpYXQiOjE3NDgxNjczMjAsImV4cCI6MTc0ODE2NzQyOH0.HAYzq7JX8s8aggtU64Jf-7hQGvASr0UJjExuoml-i2g
 ###
 GET {{base}}/api/bookings/
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYXNoZWVkaGEiLCJpYXQiOjE3NDgxNTQzNTksImV4cCI6MTc0ODE1NDQ2N30.0Lt9edxMvjOj3L6QkEU5-9xQhECCD7vcJE4Ft509jbQ
@@ -83,7 +83,7 @@ Content-Type: application/json
 ###
 # service endpoint calling
 GET {{base}}/api/services/
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYXFlZWIiLCJpYXQiOjE3NDgxNTM2MDUsImV4cCI6MTc0ODE1MzcxM30.S1ZSaDG6okEZwEKekODP-FHFbw22Uva3yJLKpmmjN68
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYXNoZWVkaGEiLCJpYXQiOjE3NDgxNjgyMDUsImV4cCI6MTc0ODE2ODMxM30.ujV28E-IEZg0B3Z5RAWR0vlqzUx-13KsgyfBbAcZ75s
 ###
 GET {{base}}/api/services/3
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYXFlZWIiLCJpYXQiOjE3NDgxNTMyNzgsImV4cCI6MTc0ODE1MzM4Nn0.EBJSzYOJUNN8sayyiq2t3Xw6f6TYPWdveNfQNDAi_nQ

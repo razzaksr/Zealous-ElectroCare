@@ -56,8 +56,13 @@ export const NewBooking = () =>{
         setRes(temp)
     }
     const callTechs = async() => {
-        const temp = await findNearElectricians(book.latitude,book.longitude)
-        setElectricians(temp)
+        try{
+            const temp = await findNearElectricians(book.latitude,book.longitude)
+            setElectricians(temp)
+        }
+        catch(err){
+            nav("/error/401")
+        }
     }
     useEffect(()=>{
         findGeo()
@@ -130,7 +135,7 @@ export const NewBooking = () =>{
                 {
                     (typeof(res)==="object")?
                     <>
-                        <Card className="m-5 rounded-3 shadow text-light" style={{background: 'linear-gradient(to right, var(--bs-green), var(--bs-blue))'}}>
+                        <Card className="col-md-7 col-12 m-5 rounded-3 shadow text-light" style={{background: 'linear-gradient(to right, var(--bs-green), var(--bs-blue))'}}>
                             <Card.Title><span className="display-6 bi bi-lightning"></span></Card.Title>
                             <Card.Body>
                                 <Card.Title><h1>Booking Confirmed</h1></Card.Title>
@@ -146,7 +151,7 @@ export const NewBooking = () =>{
                     <>
                         <h3>{res}</h3>
                         <button onClick={getConfirmation} className="btn btn-primary">Confirm</button>
-                        <div className="col">
+                        <div className="col-12">
                             <div id="map" style={{ width: "100%", height: "500px" }}></div>
                             <div ref={popupRef} className="popup"></div>
                             {/* <MapContainer center={[book.latitude, book.longitude]} zoom={12}>

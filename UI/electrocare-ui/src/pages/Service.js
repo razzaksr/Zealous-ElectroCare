@@ -8,7 +8,7 @@ export const Service = () =>{
         callFetch()
     },[])
     const callFetch = async() =>{
-        const temp = await fetchServices()
+        const temp = await fetchServices().catch(error=>console.log("Axios error happened ",error))
         setServices(temp)
     }
     return(
@@ -19,7 +19,7 @@ export const Service = () =>{
                 </div>
                 <div className="row justify-content-evenly">
                     {services.map((val)=>(
-                        <Card className="m-1 rounded-4 shadow text-light col-4" style={{background: 'linear-gradient(to right, var(--bs-green), var(--bs-blue))'}}>
+                        <Card className="m-1 rounded-4 shadow text-light col-12 col-md-4" style={{background: 'linear-gradient(to right, var(--bs-green), var(--bs-blue))'}}>
                             <Card.Title><span className="bi bi-lightning"></span></Card.Title>
                             <Card.Body>
                                 <Card.Title><p>{val.serviceName}</p></Card.Title>
