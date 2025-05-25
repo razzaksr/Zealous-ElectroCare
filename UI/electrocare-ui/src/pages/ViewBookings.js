@@ -98,28 +98,28 @@ export const ViewBookings = () =>{
                 </div>
                 <div className="row justify-content-center">
                     {bookings.map((val)=>(
-                        <Card className="m-5 rounded-3 shadow text-light" style={{background: 'linear-gradient(to right, var(--bs-green), var(--bs-blue))'}}>
-                            <Card.Title><span className="display-6 bi bi-lightning"></span></Card.Title>
+                        <Card className="m-1 rounded-3 shadow text-light col-4" style={{background: 'linear-gradient(to right, var(--bs-green), var(--bs-blue))'}}>
+                            <Card.Title><span className="bi bi-lightning"></span></Card.Title>
                             <Card.Body>
-                                <Card.Title><h1>Booking's {val.bookingId}</h1></Card.Title>
-                                <Card.Title><h1>{val.service}</h1></Card.Title>
+                                <Card.Title><p>Booking's {val.bookingId}</p></Card.Title>
+                                <Card.Title><p>{val.service}</p></Card.Title>
                             </Card.Body>
                             <Card.Body>
-                                <p className="float-start display-6">{val.technician}</p>
+                                <p className="float-start">{val.technician}</p>
                                 <button className="btn btn-outline-light float-end">{val.status}</button>
                                 {
                                     (val.status!="DONE")?
                                     <>
                                         <div className="row justify-content-center align-items-center">
                                             <div className="mb-5 col-4">
-                                                <h2>Rate Your Technician</h2>
+                                                <p>Rate Your Technician</p>
                                                 <StarRating onRate={handleRate} />
                                             </div>
                                             <div onMouseEnter={()=>{
                                                 callBill(val.service)
                                             }} className="col-5">
-                                                <h1>Pay Your bill</h1>
-                                                <h1 className="text-center">{bill}</h1>
+                                                <h3>Pay Your bill</h3>
+                                                <p className="text-center">{bill}</p>
                                                 <img style={{width:'200px'}} alt="payment" src={payment} className="d-block" />
                                             </div>
                                         </div>

@@ -17,15 +17,15 @@ export const Service = () =>{
                 <div className="alert alert-success">
                     <h1 className="text-center">View Service's</h1>
                 </div>
-                <div className="row justify-content-center">
+                <div className="row justify-content-evenly">
                     {services.map((val)=>(
-                        <Card className="m-5 rounded-3 shadow text-light" style={{background: 'linear-gradient(to right, var(--bs-green), var(--bs-blue))'}}>
-                            <Card.Title><span className="display-6 bi bi-lightning"></span></Card.Title>
+                        <Card className="m-1 rounded-4 shadow text-light col-4" style={{background: 'linear-gradient(to right, var(--bs-green), var(--bs-blue))'}}>
+                            <Card.Title><span className="bi bi-lightning"></span></Card.Title>
                             <Card.Body>
-                                <Card.Title><h1>{val.serviceName}</h1></Card.Title>
+                                <Card.Title><p>{val.serviceName}</p></Card.Title>
                             </Card.Body>
                             <Card.Body>
-                                <p className="float-start display-6">{val.price}</p>
+                                <p className="float-start">{val.price}</p>
                                 <a href={`/book/${val.serviceId}`} className="btn btn-outline-light float-end">Book</a>
                             </Card.Body>
                         </Card>
