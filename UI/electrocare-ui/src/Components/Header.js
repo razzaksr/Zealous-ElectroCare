@@ -1,9 +1,7 @@
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import logo from '../electrocare.png'
-import { useNavigate } from 'react-router-dom'
 
 export const Header = () =>{
-    const nav = useNavigate()
     return(
         <>
             <Navbar expand="lg" className="bg-body-light">
@@ -25,8 +23,12 @@ export const Header = () =>{
                                 <Nav.Item className='mb-2 mb-md-0 me-2'>
                                     <button onClick={()=>{
                                         localStorage.removeItem("logged")
-                                        nav("/")
+                                        localStorage.removeItem("username")
+                                        window.location.assign("/")
                                     }} className='btn btn-outline-success rounded-5'>Logout</button>
+                                </Nav.Item>
+                                <Nav.Item className='mb-2 mb-md-0 me-2 text-success'>
+                                    <h5>Welcome back, {localStorage.getItem('username')}</h5>
                                 </Nav.Item>
                             </>:
                             <>

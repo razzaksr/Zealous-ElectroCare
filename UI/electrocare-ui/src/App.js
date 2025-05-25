@@ -1,7 +1,6 @@
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
-import { Landing } from "./Landing";
 import { Header } from "./Components/Header";
 import Footer from "./Components/Footer";
 import { Service } from "./pages/Service";

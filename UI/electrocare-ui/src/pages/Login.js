@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Container } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { callLogin } from "../Call"
+import { jwtDecode } from 'jwt-decode'
 
 export const Login = () => {
     const nav = useNavigate()
@@ -24,7 +25,10 @@ export const Login = () => {
             const temp = await callLogin(request)
             if (typeof(temp)=="string"){
                 localStorage.setItem("logged",temp)
-                nav("/")
+                const decode = jwtDecode(temp)
+                localStorage.setItem("username",decode.sub)
+                // nav("/")
+                window.location.assign("/")
             }
             else
                 alert("invalid login")

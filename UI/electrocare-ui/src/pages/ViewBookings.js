@@ -18,12 +18,11 @@ export const ViewBookings = () =>{
         setBill(temp)
     }
     const handleRate = (rating) => {
-        // console.log("Rated:", rating);
         setRating(rating)
     };
     const fetch = async() =>{
         try{
-            const temp = await viewBookings("rasheedha")
+            const temp = await viewBookings(localStorage.getItem("username"))
             setBookings(temp)
         }
         catch(err){

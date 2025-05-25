@@ -4,7 +4,11 @@ const backend = "http://localhost:8081/api"
 const logged = localStorage.getItem("logged")
 
 export const fetchOneService = async(id) => {
-    const data = await axios.get(`${backend}/services/${id}`)
+    const data = await axios.get(`${backend}/services/${id}`,{
+        headers:{
+            Authorization: `Bearer ${logged}`
+        }
+    })
     return data.data
 }
 

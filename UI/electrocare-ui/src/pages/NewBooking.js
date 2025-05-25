@@ -10,8 +10,6 @@ import Style from "ol/style/Style"
 import Icon from "ol/style/Icon"
 import VectorLayer from "ol/layer/Vector"
 import VectorSource from "ol/source/Vector"
-// import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
-// import MarkerClusterGroup from "react-leaflet-markercluster"
 
 export const NewBooking = () =>{
     const {service} = useParams()
@@ -21,7 +19,7 @@ export const NewBooking = () =>{
     const mapRef = useRef();
     const [electricians,setElectricians] = useState([])
     const [book,setBook] = useState({
-        "bookingBy":"rasheedha",
+        "bookingBy":localStorage.getItem("username"),
         "service":service,
         "latitude":0.0, 
         "longitude":0.0
@@ -37,10 +35,6 @@ export const NewBooking = () =>{
                             longitude:position.coords.longitude,
                         }
                     })
-                // setLocation({
-                //     lat: position.coords.latitude,
-                //     lon: position.coords.longitude
-                // });
                 },
                 (err) => {
                     console.log(err.message);
@@ -67,7 +61,6 @@ export const NewBooking = () =>{
     useEffect(()=>{
         findGeo()
         callTechs()
-        // getConfirmation()
     },[])
     useEffect(() => {
         if (book.latitude && !mapRef.current) {
@@ -117,18 +110,6 @@ export const NewBooking = () =>{
             nav("/services")
         }
     }
-    // const optimizedMarkers = useMemo(() => (
-    //     <MarkerClusterGroup>
-    //         {electricians.map((provider) => (
-    //             <Marker position={[provider.latitude, provider.longitude]}>
-    //                 <Popup>
-    //                     <strong>{provider.username}</strong><br />
-    //                     Status: <b>{provider.status || "Available"}</b>
-    //                 </Popup>
-    //             </Marker>
-    //         ))}
-    //     </MarkerClusterGroup>
-    // ), [electricians]);
     return(
         <>
             <div className="alert alert-success row justify-content-center">
@@ -154,14 +135,6 @@ export const NewBooking = () =>{
                         <div className="col-12">
                             <div id="map" style={{ width: "100%", height: "500px" }}></div>
                             <div ref={popupRef} className="popup"></div>
-                            {/* <MapContainer center={[book.latitude, book.longitude]} zoom={12}>
-                                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                                <Marker position={[book.latitude, book.longitude]}>
-                                    <Popup>Your Location</Popup>
-                                </Marker>
-                                {optimizedMarkers}
-                            </MapContainer> */}
-                            {/* <img className="w-100 d-block h-100" src="https://images.pexels.com/photos/257636/pexels-photo-257636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="img" /> */}
                         </div>
                     </>
                 }
