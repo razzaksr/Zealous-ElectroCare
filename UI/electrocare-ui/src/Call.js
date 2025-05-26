@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const backend = "http://localhost:8081/api"
+const backend = process.env.REACT_APP_BACKEND
 const logged = localStorage.getItem("logged")
 
 export const fetchOneService = async(id) => {
